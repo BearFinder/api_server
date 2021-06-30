@@ -4,18 +4,21 @@
 
 post request to /api/
 
-get:
+request:
 
 ```
 {
-    "src": "{image bytes in base64}"
+    "src": "{image bytes}",
+    "width": {image width, number}, 
+    "height": {image height, number}
 }
 ```
-return:
+response:
 ```
 {
-    "count": {count bears, number},
-    "data": "{image bytes in base64 (new image)}"
+    "src": "{image bytes}",
+    "width": {image width, number}, 
+    "height": {image height, number}
 }
 ```
-> return clean JSON if error has occurred
+return clean JSON if error has occurred
