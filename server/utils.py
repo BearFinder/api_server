@@ -2,20 +2,25 @@ import time
 
 
 def get_response(data):
+    """
+    return: http code and json
+    """
     response = {}
     
     try:
         image_bytes = data["src"]
+        width = data["width"]
+        height = data["height"]
         print(image_bytes)
         time.sleep(5)
-        response = find_bears(image_bytes)
-        # TODO 
-        # make call to bear finder package
+        response = find_bears(image_bytes, width, height)
+    except KeyError as err:
+        return 400, {}
     except Exception as err:
-        pass
+        return 500, {}
+    return 200, response
 
-    return response
 
-
-def find_bears(image_src):
-    return {'data': "", "count": 0}
+def find_bears(image_src, width: int, height: int):
+    # TODO
+    return {'src': image_src, "width": width, "height": height}
